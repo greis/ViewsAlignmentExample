@@ -1,5 +1,6 @@
 #import "RootViewController.h"
 #import "LogoView.h"
+#import <Masonry/Masonry.h>
 
 @interface RootViewController () {
   LogoView *_logoView;
@@ -37,12 +38,14 @@
 }
 
 -(void)addConstraints {
-  id views = @{@"logo": self.logoView, @"background": self.backgroundView};
-  [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[background]|" options:0 metrics:nil views:views]];
-  [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[background]|" options:0 metrics:nil views:views]];
+  [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.edges.equalTo(self.view);
+  }];
   
-  [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.logoView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-  [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.logoView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+  [self.logoView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.bottom.equalTo(self.view);
+    make.centerX.equalTo(self.view);
+  }];
 }
 
 @end
