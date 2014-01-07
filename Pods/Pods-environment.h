@@ -6,9 +6,15 @@
 // project.
 
 
-// Masonry
-#define COCOAPODS_POD_AVAILABLE_Masonry
-#define COCOAPODS_VERSION_MAJOR_Masonry 0
-#define COCOAPODS_VERSION_MINOR_Masonry 2
-#define COCOAPODS_VERSION_PATCH_Masonry 4
+// ConstraintFormatter
+#define COCOAPODS_POD_AVAILABLE_ConstraintFormatter
+#define COCOAPODS_VERSION_MAJOR_ConstraintFormatter 1
+#define COCOAPODS_VERSION_MINOR_ConstraintFormatter 0
+#define COCOAPODS_VERSION_PATCH_ConstraintFormatter 0
+
+// RegexKitLite
+#define COCOAPODS_POD_AVAILABLE_RegexKitLite
+#define COCOAPODS_VERSION_MAJOR_RegexKitLite 4
+#define COCOAPODS_VERSION_MINOR_RegexKitLite 0
+#define COCOAPODS_VERSION_PATCH_RegexKitLite 0
 

@@ -1,10 +1,13 @@
 PODS:
-  - Masonry (0.2.4)
+  - ConstraintFormatter (1.0.0):
+    - RegexKitLite (~> 4.0)
+  - RegexKitLite (4.0)
 
 DEPENDENCIES:
-  - Masonry
+  - ConstraintFormatter
 
 SPEC CHECKSUMS:
-  Masonry: 73df2f346bd1a0044dc9de969aa45aea2f8a9bd8
+  ConstraintFormatter: 2dd403dafe8d2022b763ee1da99e1be9b9373ec8
+  RegexKitLite: f7af7b4d2b675cd2ec9a4abab6aad6ae1f6499c0
 
-COCOAPODS: 0.25.0
+COCOAPODS: 0.26.2
