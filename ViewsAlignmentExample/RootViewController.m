@@ -1,5 +1,6 @@
 #import "RootViewController.h"
 #import "LogoView.h"
+#import "ConstraintFormatter.h"
 
 @interface RootViewController () {
   LogoView *_logoView;
@@ -23,7 +24,6 @@
   if (!_backgroundView) {
     _backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"group-picture"]];
     [_backgroundView setContentMode:UIViewContentModeScaleAspectFill];
-    [_backgroundView setTranslatesAutoresizingMaskIntoConstraints:NO];
   }
   return _backgroundView;
 }
@@ -31,18 +31,20 @@
 -(LogoView *)logoView {
   if (!_logoView) {
     _logoView = [[LogoView alloc] init];
-    [_logoView setTranslatesAutoresizingMaskIntoConstraints:NO];
   }
   return _logoView;
 }
 
 -(void)addConstraints {
   id views = @{@"logo": self.logoView, @"background": self.backgroundView};
-  [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[background]|" options:0 metrics:nil views:views]];
-  [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[background]|" options:0 metrics:nil views:views]];
+  id metrics = @{@"margin": @(10)};
+  id formats = @[@"logo.centerX == superview.centerX",
+                 @"logo.bottom == superview.bottom",
+                 @"H:|-margin-[background]|",
+                 @"V:|[background]|"];
   
-  [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.logoView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-  [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.logoView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+  [self.view addConstraintsWithFormats:formats views:views metrics:metrics];
+  
 }
 
 @end

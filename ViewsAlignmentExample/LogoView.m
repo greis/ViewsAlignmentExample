@@ -1,4 +1,5 @@
 #import "LogoView.h"
+#import "ConstraintFormatter.h"
 
 @interface LogoView () {
   UIImageView *_imageView;
@@ -42,9 +43,12 @@
 -(void)addConstraints {
   id views = @{@"image": self.imageView, @"label": self.label};
   id metrics = @{@"margin": @6};
+  id formats = @[@"label.centerY == superview.centerY",
+                 @"H:|-margin-[image]-margin-[label]-margin-|",
+                 @"V:|-margin-[image]-margin-|"];
   
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[image]-margin-[label]-margin-|" options:NSLayoutFormatAlignAllCenterY metrics:metrics views:views]];
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[image]-margin-|" options:0 metrics:metrics views:views]];
+  [self addConstraintsWithFormats:formats views:views metrics:metrics];
+  
 }
 
 @end
